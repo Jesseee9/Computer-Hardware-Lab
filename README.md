@@ -18,14 +18,6 @@ Built and maintained by Jesse Adejoh as part of ongoing IT support skill develop
 |OS       |Windows 10 Home — Version 22H2  |
 |Hostname |LAPTOP-UR0A2U61                 |
 
------
-
-## Equipment
-
-|Item                     |Purpose                                                                                                              |
-|-------------------------|---------------------------------------------------------------------------------------------------------------------|
-|Precision screwdriver set|Removing base panel and internal components                                                                          |
-|Anti-static precautions  |Touch a grounded metal surface before handling components — reduces risk of electrostatic discharge damaging hardware|
 
 -----
 
