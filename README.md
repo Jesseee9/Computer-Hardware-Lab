@@ -25,7 +25,6 @@ Built and maintained by Jesse Adejoh as part of ongoing IT support skill develop
 
 1. Power off the laptop fully — not sleep or hibernate. Unplug the charger
 1. Remove the main battery before touching any internal components
-1. Touch a metal surface before handling any component to discharge static
 1. Never force a component — if it does not move freely, check for a hidden screw or clip
 1. Keep screws organised — use a small container or magnetic mat so nothing gets lost
 1. Photograph the inside before touching anything — gives you a reference if something looks wrong later
