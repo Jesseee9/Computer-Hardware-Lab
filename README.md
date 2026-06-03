@@ -18,6 +18,14 @@ Built and maintained by Jesse Adejoh as part of ongoing IT support skill develop
 |OS       |Windows 10 Home — Version 22H2  |
 |Hostname |LAPTOP-UR0A2U61                 |
 
+-----
+
+## Equipment
+
+|Item                     |Purpose                                                                                                              |
+|-------------------------|---------------------------------------------------------------------------------------------------------------------|
+|Precision screwdriver set|Removing base panel and internal components                                                                          |
+|Anti-static precautions  |Touch a grounded metal surface before handling components — reduces risk of electrostatic discharge damaging hardware|
 
 -----
 
@@ -25,6 +33,7 @@ Built and maintained by Jesse Adejoh as part of ongoing IT support skill develop
 
 1. Power off the laptop fully — not sleep or hibernate. Unplug the charger
 1. Remove the main battery before touching any internal components
+1. Touch a metal surface before handling any component to discharge static
 1. Never force a component — if it does not move freely, check for a hidden screw or clip
 1. Keep screws organised — use a small container or magnetic mat so nothing gets lost
 1. Photograph the inside before touching anything — gives you a reference if something looks wrong later
@@ -211,25 +220,76 @@ wmic diskdrive get status
 
 -----
 
+### Session 7: Wi-Fi Card Inspection and Antenna Check
+
+**Scenario:** A user reports intermittent Wi-Fi dropping and slow wireless speeds. The Wi-Fi card and antenna connections need physical inspection.
+
+**Workflow:**
+
+1. Power off, unplug, remove battery
+1. Open the base panel
+1. Locate the Wi-Fi card — small rectangular card usually held by one screw, with two thin antenna cables attached (black and white)
+1. Photograph the card and antenna connections before touching anything
+1. Note the colour of each antenna cable and which connector it is attached to — this matters when reconnecting
+1. Carefully disconnect both antenna cables by pulling straight up from the connector — do not pull by the cable itself
+1. Unscrew the retaining screw and remove the Wi-Fi card
+1. Inspect the card and connectors for physical damage, corrosion, or debris
+1. Re-seat the card, secure the screw, and reconnect both antenna cables — press each one down firmly until it clicks
+1. Reassemble and power on
+1. Open Settings > Network and Internet > Wi-Fi — confirm Wi-Fi is detected and available networks are visible
+1. Log the session — note antenna cable colours, connector condition, and whether Wi-Fi was detected after reassembly
+1. Push to GitHub
+
+**Skills:** Wireless hardware, antenna cable handling, connector identification, physical fault diagnosis, Wi-Fi verification
+
+-----
+
+### Session 8: Deep Clean and Preventative Maintenance
+
+**Scenario:** A laptop is running hot and the fan is audibly louder than normal. Carry out a full preventative maintenance clean — this is a standard scheduled task in any MSP environment.
+
+**Workflow:**
+
+1. Power off, unplug, remove battery
+1. Open the base panel
+1. Photograph the full interior before touching anything — this is your before evidence
+1. Locate the fan and heatsink — note the level of dust visually before cleaning
+1. If compressed air is available — hold the fan blade still with a fingertip to stop it spinning, then blow compressed air through the vents in short bursts. Do this outside or away from other equipment
+1. If no compressed air — use a soft dry brush to gently sweep dust from the fan blades and heatsink fins. Do not use cloths that generate static
+1. Check all visible surfaces for dust buildup — pay attention to the vents along the edges of the chassis
+1. Inspect all visible cables and connectors while the panel is open — note anything that looks loose or out of place
+1. Photograph the interior again after cleaning — this is your after evidence
+1. Reassemble and power on
+1. Open Task Manager > Performance > CPU — note the idle temperature and compare against Session 5 if completed
+1. Log the session — note dust level before and after, fan condition, and temperature reading
+1. Push to GitHub
+
+**Skills:** Preventative maintenance, thermal management, safe cleaning procedure, before and after documentation, MSP scheduled maintenance workflow
+
+-----
+
 ## Looping the Lab
 
-After Session 6, restart with harder constraints:
+After Session 8, restart with harder constraints:
 
-|Loop  |Constraint                                                                                    |
-|------|----------------------------------------------------------------------------------------------|
-|Loop 2|Time each session — aim to complete disassembly, task, and reassembly within 20 minutes       |
-|Loop 3|No notes or README during the session — work from memory, then verify against the README after|
-|Loop 4|Combine tasks — Session 2 and 3 in one sitting, treating it as a full hardware audit ticket   |
+|Loop  |Constraint                                                                                            |
+|------|------------------------------------------------------------------------------------------------------|
+|Loop 2|Time each session — aim to complete disassembly, task, and reassembly within 20 minutes               |
+|Loop 3|No notes or README during the session — work from memory, then verify against the README after        |
+|Loop 4|Combine tasks — Session 2 and 3 in one sitting, treating it as a full hardware audit ticket           |
+|Loop 5|Sessions 7 and 8 back to back — full wireless inspection and deep clean as a single maintenance ticket|
 
 -----
 
 ## Skills Covered
 
-**Hardware** — Component identification, RAM handling, storage drive types, CMOS battery, cooling systems, form factors, connectors
+**Hardware** — Component identification, RAM handling, storage drive types, CMOS battery, cooling systems, Wi-Fi card, antenna cables, form factors, connectors
 
-**Diagnostics** — POST error interpretation, Windows disk tools, temperature monitoring, fault simulation and resolution
+**Diagnostics** — POST error interpretation, Windows disk tools, temperature monitoring, fault simulation and resolution, Wi-Fi verification
 
-**Safety** — Electrostatic discharge prevention, safe disassembly, battery removal, component handling
+**Safety** — Electrostatic discharge prevention, safe disassembly, battery removal, component handling, anti-static wrist strap
+
+**Maintenance** — Preventative cleaning, thermal management, before and after documentation, MSP scheduled maintenance workflow
 
 **Documentation** — Evidence photography, structured logging, GitHub as audit trail
 
