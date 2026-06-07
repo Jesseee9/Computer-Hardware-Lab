@@ -8,15 +8,15 @@ Built and maintained by Jesse Adejoh as part of ongoing IT support skill develop
 
 ## Hardware Specs
 
-|Component  |Details                                          |
-|-----------|-------------------------------------------------|
-|Device     |Dell Latitude 3340                               |
-|Processor  |Intel Core i3-4005U @ 1.70GHz                    |
-|RAM        |4GB DDR3                                         |
-|Storage    |M.2 SSD (2230 or 2280 — confirmed on disassembly)|
-|OS         |Windows 10 Pro — Version 22H2                    |
-|Hostname   |DESKTOP-LQ8TJI2                                  |
-|Service Tag|2HP9812                                          |
+|Component  |Details                                         |
+|-----------|------------------------------------------------|
+|Device     |Dell Latitude 3340                              |
+|Processor  |Intel Core i3-4005U @ 1.70GHz                   |
+|RAM        |4GB DDR3L — single stick in slot B, slot A empty|
+|Storage    |2.5-inch SATA drive                             |
+|OS         |Windows 10 Pro — Version 22H2                   |
+|Hostname   |DESKTOP-LQ8TJI2                                 |
+|Service Tag|2HP9812                                         |
 
 -----
 
@@ -35,12 +35,13 @@ Built and maintained by Jesse Adejoh as part of ongoing IT support skill develop
 ## Safety Rules — Read Before Every Session
 
 - Power off the laptop fully — not sleep or hibernate. Unplug the charger
-- Fasten your anti-static wrist strap and clip it to a bare metal surface before touching anything inside
+- Remove the battery before touching any internal component
+- Fasten your anti-static wrist strap and clip it to a bare metal surface before opening the chassis
 - Never force a component — if it does not move freely, check for a hidden screw or clip
 - Keep screws organised — use a small container so nothing gets lost
-- Photograph the inside before touching anything — gives you a reference if something looks wrong later
+- Photograph the inside before touching anything — gives you a reference point and evidence of the initial state
 - When disconnecting cables, pull from the connector — never pull the cable itself
-- After working inside, replace all panels and screws before powering on
+- After working inside, replace all panels and screws before attempting to power on
 
 -----
 
@@ -51,7 +52,7 @@ Computer-Hardware-Lab/
 ├── logs/
 │   └── hardware_log.csv        # One row per completed session
 ├── evidence/
-│   └── session_XX/             # Photos or notes saved per session
+│   └── session_XX/             # Photos saved per session
 ├── README.md
 └── LOGGING.md
 ```
@@ -60,7 +61,7 @@ Computer-Hardware-Lab/
 
 ## Logging
 
-Every completed session gets one row added manually to `logs/hardware_log.csv`.
+Every completed session gets one row added manually to logs/hardware_log.csv.
 
 |Column |Description                                                      |
 |-------|-----------------------------------------------------------------|
@@ -91,76 +92,78 @@ git add . && git commit -m "Session X complete — [task name]" && git push
 **Workflow:**
 
 1. Power off the laptop fully and unplug the charger
-1. Enter Service Mode — hold the **B** key and press the power button for 3 seconds until the Dell logo appears. Follow the on-screen prompts. This safely cuts power without disconnecting the battery internally
+1. Remove the battery
 1. Remove the base cover:
 - Use a Phillips #0 to remove all base panel screws
-- Use a plastic pry tool starting from the recesses near the hinges at the bottom edge — work around the perimeter to release the clips
-1. Photograph the inside before touching anything
-1. Identify and locate each component — record what you see:
-- RAM slot — note whether one or two slots, and how many are populated
-- M.2 SSD — note the size (2230 or 2280) and confirm it is seated correctly
-- CMOS battery — small round coin cell on the motherboard
-- Cooling fan and heatsink
-- Wi-Fi card — small rectangular card with two antenna cables (black and white)
-1. Cross-reference what you see against the Windows System Information already documented in the Hardware Specs section above
-1. Reassemble — seat the base cover clips first, then replace all screws
-1. Power on and confirm normal boot
-1. Log the session in `logs/hardware_log.csv`
+- Use a plastic pry tool starting from the recesses near the hinges — work around the perimeter to release the clips
+1. Take a photograph of the full interior before touching anything — this is your evidence of the initial state
+1. Examine each component carefully before recording anything:
+- Motherboard — the main circuit board the entire laptop is built around. Every component connects to or sits on it
+- RAM slot — note how many slots are present, which are populated, and what type of RAM is installed. Check the label on the stick itself
+- Storage bay — locate the 2.5-inch SATA bay and note whether a drive is present. Check the SATA connector and cable condition
+- CMOS battery — small round coin cell on the motherboard. Note its location and how it is connected
+- Cooling fan and heatsink — locate the fan and the copper heatsink. Note the condition of the fan blades and whether dust is visible
+- Wi-Fi card — small rectangular card with two antenna cables. Note the colour of each cable and which connector it sits on
+1. Take a photograph of each component individually
+1. Cross-reference what you see against the Hardware Specs table above — note any differences
+1. Reassemble — seat the base cover clips first, then replace all screws. Battery goes in last
+1. Log the session in logs/hardware_log.csv
 1. Push to GitHub
 
-**Skills:** Hardware identification, documentation, safe disassembly and reassembly, Dell Service Mode
+**What you are learning:** How to approach an unfamiliar device methodically before doing any work. In a real MSP environment, documenting hardware before touching it protects you if something is already broken and gives the client an accurate record of their equipment.
+
+**Skills:** Hardware identification, component documentation, safe disassembly and reassembly, evidence photography
 
 -----
 
 ### Session 2: RAM Inspection and Re-seating
 
-**Scenario:** A user reports their laptop is running slowly and freezing intermittently. First physical check is RAM — inspect the stick, remove it, clean the contacts, and re-seat it.
+**Scenario:** A user reports their laptop is running slowly and freezing intermittently. First physical check is RAM — inspect the stick, remove it, examine the contacts, and re-seat it.
 
 **Workflow:**
 
-1. Power off, enter Service Mode, unplug charger
+1. Power off, remove battery, unplug charger
 1. Remove the base cover
-1. Locate the RAM stick — note which slot it occupies
-1. Release the side clips on the RAM stick — it will pop up at an angle
-1. Remove it fully — hold by the edges only, never touch the gold contacts
-1. Inspect the contacts — note any discolouration or debris
-1. Re-seat the stick firmly at the correct angle until both clips click back into place
-1. Reassemble and power on
-1. Open System Information — confirm RAM still shows as 4GB
-1. Log the session — note which slot was populated and whether the contacts looked clean
+1. Before touching the RAM — look at how it sits in the slot and note the angle it is installed at. This is what correctly seated RAM looks like
+1. Take a photograph of the RAM in place before removing it
+1. Release the side clips — press both clips outward simultaneously and the stick will pop up at an angle
+1. Remove the stick fully — hold by the edges only, never touch the gold contacts along the bottom edge
+1. Examine the gold contacts closely — clean contacts should be bright and uniform. Note any discolouration, debris, or damage
+1. Re-seat the stick — align it at the correct angle and press firmly until both clips click into place
+1. Take a photograph of the RAM re-seated
+1. Reassemble
+1. Log the session — note which slot was populated, contact condition, and any findings
 1. Push to GitHub
 
-**Why this matters:** Poorly seated RAM causes random freezes, blue screens, and boot failures. Re-seating is one of the first physical checks a technician performs before escalating to a hardware replacement.
+**What you are learning:** RAM is one of the first physical components checked when a system freezes or crashes. Understanding what correctly seated RAM looks like and how to inspect the contacts is a fundamental diagnostic skill.
 
-**Skills:** RAM handling, electrostatic discharge awareness, fault diagnosis process, hardware verification
+**Skills:** RAM handling, electrostatic discharge awareness, contact inspection, physical fault diagnosis
 
 -----
 
 ### Session 3: Storage Drive Inspection
 
-**Scenario:** A user reports the laptop is slow to boot. Inspect the M.2 SSD — confirm the type, check the connection, and run a health check from Windows.
+**Scenario:** A user reports the laptop is slow. Inspect the 2.5-inch SATA storage drive — confirm it is correctly connected, check the cable and connector, and document the condition.
 
 **Workflow:**
 
-1. Power off, enter Service Mode, unplug charger
+1. Power off, remove battery, unplug charger
 1. Remove the base cover
-1. Locate the M.2 SSD — photograph it in place before removing
-1. Note the drive size — measure or check whether it is 2230 (shorter) or 2280 (longer)
-1. Unscrew the retaining screw and carefully slide the drive out at an angle
-1. Inspect the connector and drive casing for physical damage or debris
-1. Re-seat the drive — slide in at an angle, press down, and replace the retaining screw
-1. Reassemble and boot into Windows
-1. Open Command Prompt and run a drive health check:
-   ```
-   wmic diskdrive get status
-   ```
-1. Open Disk Management — confirm the drive is showing correctly with the right capacity
-1. Log the session — note drive size, connection condition, and health check result
+1. Locate the 2.5-inch SATA drive sitting in its metal caddy screwed to the chassis
+1. Take a photograph of the drive in place before removing anything
+1. Examine the SATA ribbon cable connecting the drive to the motherboard — look for fraying, kinking, or a loose connection at either end
+1. Unscrew the drive caddy from the chassis
+1. Carefully slide the caddy away from the SATA interposer port on the motherboard — do not pull by the cable
+1. Inspect the SATA connector on both the drive and the motherboard port — look for bent pins, debris, or corrosion
+1. Re-seat the drive — slide the caddy back into the interposer port and secure the screws
+1. Take a photograph of the drive re-seated
+1. Reassemble
+1. Log the session — note drive condition, cable condition, connector condition, and any findings
 1. Push to GitHub
 
-**Why this matters:** A loose or failing M.2 drive causes slow boot times, file corruption, and system instability. Physical inspection rules out connection issues before replacing hardware.
+**What you are learning:** A loose or damaged SATA connection causes slow boot times and file read errors. Physically inspecting and re-seating the drive rules out a connection fault before escalating to a drive replacement.
 
-**Skills:** M.2 SSD identification, storage connection types, Windows disk tools, physical fault diagnosis
+**Skills:** SATA storage identification, cable and connector inspection, drive handling, physical fault diagnosis
 
 -----
 
@@ -170,23 +173,24 @@ git add . && git commit -m "Session X complete — [task name]" && git push
 
 **Workflow:**
 
-1. Power off, enter Service Mode, unplug charger
+1. Power off, remove battery, unplug charger
 1. Remove the base cover
-1. Locate the CMOS coin-cell battery on the motherboard — small round silver battery
-1. Note its position and orientation before removing
+1. Locate the CMOS coin-cell battery on the motherboard — small round silver battery, usually CR2032
+1. Before removing it — understand what it does. This battery keeps BIOS settings stored when main power is removed. When it dies, the system loses its date, time, and configuration on every reboot
+1. Take a photograph of the CMOS battery in place
 1. Remove the CMOS battery carefully using a plastic pry tool — do not use a metal screwdriver
-1. Wait 60 seconds — this clears the volatile memory and resets BIOS settings to default
+1. Wait 60 seconds — this drains residual charge and clears the volatile BIOS memory
 1. Re-seat the CMOS battery
 1. Reassemble and power on
-1. Enter BIOS — press **F2** during startup on the Dell Latitude 3340
-1. Confirm the date and time have reset — set them correctly and save
-1. Boot into Windows and confirm normal operation
-1. Log the session — note what reset and what the BIOS showed on entry
+1. Enter BIOS — press F2 during startup
+1. Confirm the date and time have reset to default — set them correctly and save
+1. Take a photograph of the BIOS screen showing the reset state
+1. Log the session — note what the BIOS showed on entry and what was corrected
 1. Push to GitHub
 
-**Why this matters:** CMOS resets are used to clear BIOS passwords, fix incorrect system clock behaviour, and restore default hardware settings. It is a standard first step before escalating a BIOS-related fault.
+**What you are learning:** CMOS resets clear BIOS passwords, fix clock faults, and restore default hardware settings. It is a standard first step for any BIOS-related fault before escalating further.
 
-**Skills:** BIOS navigation, CMOS reset, motherboard components, Dell boot keys, hardware fault simulation
+**Skills:** CMOS battery handling, BIOS navigation, motherboard components, Dell boot keys
 
 -----
 
@@ -196,23 +200,22 @@ git add . && git commit -m "Session X complete — [task name]" && git push
 
 **Workflow:**
 
-1. Power off, enter Service Mode, unplug charger
+1. Power off, remove battery, unplug charger
 1. Remove the base cover
-1. Locate the cooling fan and heatsink
-1. Photograph the fan and heatsink before touching — this is your before evidence
-1. Inspect for dust buildup — note whether the fan blades are visibly clogged
-1. If compressed air is available — hold the fan blade still with a fingertip to stop it spinning, then blow dust out in short bursts. Do this away from other equipment
-1. If no compressed air — use a soft brush to gently sweep dust from the fan blades and heatsink fins
-1. Check the fan spins freely by gently rotating a blade — it should move without resistance
-1. Reassemble and power on
-1. Open Task Manager — go to Performance > CPU and monitor under load
-1. If HWMonitor or Core Temp is available, note the idle temperature
-1. Log the session — note dust level, fan condition, and temperature readings
+1. Locate the cooling fan and heatsink — the fan sits over the CPU and the copper heatsink pipes draw heat away from it
+1. Take a photograph of the fan and heatsink before touching anything — this is your before evidence
+1. Examine the fan blades closely — dust buildup here directly restricts airflow and causes overheating. Note the level of buildup
+1. Examine the heatsink fins — note whether the gaps between the fins are clogged
+1. Gently rotate one fan blade with a fingertip — it should spin freely. Any grinding or stiffness indicates a bearing fault
+1. Use a soft brush to gently sweep dust from the fan blades and heatsink fins
+1. Take a photograph of the fan and heatsink after cleaning — this is your after evidence
+1. Reassemble
+1. Log the session — note dust level before and after, fan condition, and any findings
 1. Push to GitHub
 
-**Why this matters:** Thermal throttling and unexpected shutdowns are among the most common hardware complaints. Dust buildup restricts airflow and causes the CPU to overheat. Cleaning the fan is one of the first physical checks in any overheating diagnosis.
+**What you are learning:** Dust buildup is one of the most common causes of overheating and unexpected shutdowns. Inspecting and cleaning the cooling system is a standard preventative maintenance task.
 
-**Skills:** Thermal management, preventative maintenance, Windows performance tools, hardware inspection
+**Skills:** Thermal management, fan inspection, preventative maintenance, before and after evidence documentation
 
 -----
 
@@ -222,21 +225,22 @@ git add . && git commit -m "Session X complete — [task name]" && git push
 
 **Workflow:**
 
-1. Power off, enter Service Mode, unplug charger
+1. Power off, remove battery, unplug charger
 1. Remove the base cover
 1. Deliberately remove the RAM stick and leave it out
 1. Reassemble the laptop fully
-1. Power on — observe what happens. The Dell Latitude 3340 will emit diagnostic beep codes or display an error if RAM is missing
-1. Document the symptom exactly — this is your fault report
-1. Power off, remove the base cover, re-seat the RAM stick correctly
-1. Reassemble and power on — confirm normal boot
-1. Open System Information — confirm RAM shows as 4GB
-1. Log the session — document the fault symptom, diagnosis, and resolution
+1. Attempt to power on — observe exactly what happens. Note any beep codes, LED patterns, or error behaviour
+1. Document the symptom exactly — record it as you would on a real support ticket
+1. Power off, remove the base cover
+1. Examine the empty RAM slot — this is what a missing component fault looks like from the inside
+1. Re-seat the RAM stick correctly — press firmly until both clips click
+1. Reassemble and attempt to power on — note whether the behaviour changes
+1. Log the session — document the fault symptom, diagnosis, fix applied, and outcome
 1. Push to GitHub
 
-**Why this matters:** POST errors are the first diagnostic tool a technician uses when a device will not boot. Learning to simulate and interpret them builds the fault-finding process used on every hardware support ticket.
+**What you are learning:** POST failures are the first thing diagnosed when a device will not boot. Simulating a fault, documenting the symptom, and tracing it to a physical cause is the core of hardware fault diagnosis.
 
-**Skills:** Fault diagnosis, POST error interpretation, RAM troubleshooting, reassembly under fault conditions, documentation
+**Skills:** Fault simulation, POST behaviour, RAM fault diagnosis, reassembly under fault conditions, ticket documentation
 
 -----
 
@@ -246,23 +250,23 @@ git add . && git commit -m "Session X complete — [task name]" && git push
 
 **Workflow:**
 
-1. Power off, enter Service Mode, unplug charger
+1. Power off, remove battery, unplug charger
 1. Remove the base cover
-1. Locate the Wi-Fi card — small rectangular card held by one screw, with two thin antenna cables attached (black and white)
-1. Photograph the card and antenna connections before touching anything
-1. Note the colour of each antenna cable and which connector it is attached to — this is critical when reconnecting
-1. Carefully disconnect both antenna cables by pulling straight up from the connector — never pull by the cable itself
+1. Locate the Wi-Fi card — small rectangular card held by one screw, with two thin antenna cables attached
+1. Take a photograph of the card and antenna connections before touching anything
+1. Examine both antenna cables — note the colour of each and which connector it sits on. Look for fraying, kinking, or cables that appear loose
+1. Carefully disconnect both antenna cables by pulling straight up from the connector — never pull by the cable
 1. Unscrew the retaining screw and remove the Wi-Fi card
-1. Inspect the card and connectors for physical damage, corrosion, or debris
-1. Re-seat the card, secure the retaining screw, and reconnect both antenna cables — press each one down firmly until it clicks
-1. Reassemble and power on
-1. Open Settings > Network and Internet > Wi-Fi — confirm Wi-Fi is detected and available networks are visible
-1. Log the session — note antenna cable colours, connector condition, and whether Wi-Fi was detected after reassembly
+1. Examine the card connectors and card edge for corrosion, debris, or physical damage
+1. Re-seat the card, secure the retaining screw, and reconnect both antenna cables — press each firmly until it clicks
+1. Take a photograph of the card re-seated with both cables connected
+1. Reassemble
+1. Log the session — note antenna cable colours, connector condition, and any findings
 1. Push to GitHub
 
-**Why this matters:** Loose antenna cables are a common cause of poor wireless signal and intermittent disconnections. Physical inspection rules out connection issues before replacing the card or escalating to a software fix.
+**What you are learning:** Loose antenna cables are a frequent cause of poor wireless signal and intermittent drops. Physical inspection rules out a connection fault before replacing the card or moving to a software investigation.
 
-**Skills:** Wireless hardware, antenna cable handling, connector identification, physical fault diagnosis, Wi-Fi verification
+**Skills:** Wi-Fi card handling, antenna cable identification, connector inspection, physical fault diagnosis
 
 -----
 
@@ -272,23 +276,23 @@ git add . && git commit -m "Session X complete — [task name]" && git push
 
 **Workflow:**
 
-1. Power off, enter Service Mode, unplug charger
+1. Power off, remove battery, unplug charger
 1. Remove the base cover
-1. Photograph the full interior before touching anything — this is your before evidence
-1. Locate the fan and heatsink — note the level of dust visually before cleaning
-1. If compressed air is available — hold the fan blade still, then blow compressed air through the vents in short bursts away from other equipment
-1. If no compressed air — use a soft dry brush to gently sweep dust from the fan blades and heatsink fins. Do not use cloths that generate static
-1. Check all visible surfaces for dust buildup — pay attention to the vents along the edges of the chassis
-1. Inspect all visible cables and connectors while the panel is open — note anything that looks loose or out of place
-1. Photograph the interior again after cleaning — this is your after evidence
-1. Reassemble and power on
-1. Open Task Manager > Performance > CPU — note the idle temperature and compare against Session 5
-1. Log the session — note dust level before and after, fan condition, and temperature reading
+1. Take a photograph of the full interior before touching anything — this is your before evidence
+1. Work through the interior methodically — examine every visible surface for dust, debris, or anything out of place:
+- Fan blades and heatsink fins
+- Vents along the edges of the chassis
+- All visible cable connections and connectors
+1. Use a soft dry brush to sweep dust from the fan blades, heatsink fins, and chassis vents — work carefully and do not dislodge any cables
+1. Note anything that looks loose, damaged, or unusual — this is the kind of finding that goes into a client report
+1. Take a photograph of the full interior after cleaning — this is your after evidence
+1. Reassemble
+1. Log the session — note dust level before and after, fan condition, any loose connections found, and overall condition
 1. Push to GitHub
 
-**Why this matters:** Preventative maintenance is a scheduled task in every MSP contract. Documenting before and after evidence is standard practice — it protects the technician and gives the client a record of work completed.
+**What you are learning:** Preventative maintenance is a scheduled deliverable in MSP contracts. Documenting the before and after state with photographs is standard practice — it protects the technician and gives the client evidence of work completed.
 
-**Skills:** Preventative maintenance, thermal management, safe cleaning procedure, before and after documentation, MSP scheduled maintenance workflow
+**Skills:** Preventative maintenance, systematic inspection, evidence documentation, MSP maintenance workflow
 
 -----
 
@@ -296,24 +300,24 @@ git add . && git commit -m "Session X complete — [task name]" && git push
 
 After Session 8, restart with harder constraints:
 
-|Loop  |Constraint                                                                                            |
-|------|------------------------------------------------------------------------------------------------------|
-|Loop 2|Time each session — aim to complete disassembly, task, and reassembly within 20 minutes               |
-|Loop 3|No notes or README during the session — work from memory, then verify against the README after        |
-|Loop 4|Combine tasks — Sessions 2 and 3 in one sitting, treating it as a full hardware audit ticket          |
-|Loop 5|Sessions 7 and 8 back to back — full wireless inspection and deep clean as a single maintenance ticket|
+|Loop  |Constraint                                                                                    |
+|------|----------------------------------------------------------------------------------------------|
+|Loop 2|Time each session — complete disassembly, task, and reassembly within 20 minutes              |
+|Loop 3|No notes or README during the session — work from memory, verify against the README after     |
+|Loop 4|Sessions 2 and 3 in one sitting — treat it as a full hardware audit ticket                    |
+|Loop 5|Sessions 7 and 8 back to back — full wireless inspection and deep clean as one maintenance job|
 
 -----
 
 ## Skills Covered
 
-**Hardware** — Component identification, RAM handling, M.2 SSD types, CMOS battery, cooling systems, Wi-Fi card, antenna cables, form factors, connectors
+**Hardware** — Component identification, motherboard orientation, RAM handling, SATA storage, CMOS battery, cooling systems, Wi-Fi card, antenna cables, connectors
 
-**Diagnostics** — POST error interpretation, Windows disk tools, temperature monitoring, fault simulation and resolution, Wi-Fi verification
+**Diagnostics** — POST behaviour, fault simulation and resolution, physical fault diagnosis, cable and connector inspection
 
-**Safety** — Electrostatic discharge prevention, safe disassembly, Service Mode, component handling, anti-static wrist strap
+**Safety** — Electrostatic discharge prevention, safe disassembly, battery removal, anti-static wrist strap, component handling
 
-**Maintenance** — Preventative cleaning, thermal management, before and after documentation, MSP scheduled maintenance workflow
+**Maintenance** — Preventative cleaning, thermal management, before and after documentation, MSP maintenance workflow
 
 **Documentation** — Evidence photography, structured logging, GitHub as audit trail
 
@@ -323,4 +327,4 @@ After Session 8, restart with harder constraints:
 
 ## Audit Trail
 
-Every session is logged manually to `logs/hardware_log.csv` immediately after completion. Evidence photos are saved to `evidence/session_XX/`. See LOGGING.md for the full schema.
+Every session is logged manually to logs/hardware_log.csv immediately after completion. Evidence photos are saved to evidence/session_XX/. See LOGGING.md for the full schema.
