@@ -41,7 +41,7 @@ Built and maintained by Jesse Adejoh as part of ongoing IT support skill develop
 - Keep screws organised — use a small container so nothing gets lost
 - Photograph the inside before touching anything — gives you a reference point and evidence of the initial state
 - When disconnecting cables, pull from the connector — never pull the cable itself
-- After working inside, replace all panels and screws before attempting to power on
+- After working inside, replace all panels and screws before setting the device aside
 
 -----
 
@@ -50,7 +50,7 @@ Built and maintained by Jesse Adejoh as part of ongoing IT support skill develop
 ```
 Computer-Hardware-Lab/
 ├── logs/
-│   └── hardware_log.csv        # One row per completed session
+│   └── hardware_log.tsv        # One row per completed session
 ├── evidence/
 │   └── session_XX/             # Photos saved per session
 ├── README.md
@@ -61,7 +61,7 @@ Computer-Hardware-Lab/
 
 ## Logging
 
-Every completed session gets one row added manually to logs/hardware_log.csv.
+Every completed session gets one row added manually to `logs/hardware_log.tsv`.
 
 |Column |Description                                                      |
 |-------|-----------------------------------------------------------------|
@@ -91,23 +91,22 @@ git add . && git commit -m "Session X complete — [task name]" && git push
 
 **Workflow:**
 
-1. Power off the laptop fully and unplug the charger
-1. Remove the battery
+1. Remove the battery and unplug the charger
 1. Remove the base cover:
 - Use a Phillips #0 to remove all base panel screws
 - Use a plastic pry tool starting from the recesses near the hinges — work around the perimeter to release the clips
 1. Take a photograph of the full interior before touching anything — this is your evidence of the initial state
 1. Examine each component carefully before recording anything:
-- Motherboard — the main circuit board the entire laptop is built around. Every component connects to or sits on it
-- RAM slot — note how many slots are present, which are populated, and what type of RAM is installed. Check the label on the stick itself
-- Storage bay — locate the 2.5-inch SATA bay and note whether a drive is present. Check the SATA connector and cable condition
-- CMOS battery — small round coin cell on the motherboard. Note its location and how it is connected
-- Cooling fan and heatsink — locate the fan and the copper heatsink. Note the condition of the fan blades and whether dust is visible
-- Wi-Fi card — small rectangular card with two antenna cables. Note the colour of each cable and which connector it sits on
+- **Motherboard** — the main circuit board the entire laptop is built around. Every component connects to or sits on it
+- **RAM slot** — note how many slots are present, which are populated, and what type of RAM is installed. Check the label on the stick itself
+- **Storage bay** — locate the 2.5-inch SATA bay. Check whether a drive is present, and inspect the SATA connector and cable condition
+- **CMOS battery** — small round coin cell on the motherboard. Note its location and how it is connected
+- **Cooling fan and heatsink** — locate the fan and the copper heatsink. Note the condition of the fan blades and whether dust is visible
+- **Wi-Fi card** — small rectangular card with two antenna cables. Note the colour of each cable and which connector it sits on
 1. Take a photograph of each component individually
 1. Cross-reference what you see against the Hardware Specs table above — note any differences
 1. Reassemble — seat the base cover clips first, then replace all screws. Battery goes in last
-1. Log the session in logs/hardware_log.csv
+1. Log the session in `logs/hardware_log.tsv`
 1. Push to GitHub
 
 **What you are learning:** How to approach an unfamiliar device methodically before doing any work. In a real MSP environment, documenting hardware before touching it protects you if something is already broken and gives the client an accurate record of their equipment.
@@ -122,7 +121,7 @@ git add . && git commit -m "Session X complete — [task name]" && git push
 
 **Workflow:**
 
-1. Power off, remove battery, unplug charger
+1. Remove the battery and unplug the charger
 1. Remove the base cover
 1. Before touching the RAM — look at how it sits in the slot and note the angle it is installed at. This is what correctly seated RAM looks like
 1. Take a photograph of the RAM in place before removing it
@@ -147,7 +146,7 @@ git add . && git commit -m "Session X complete — [task name]" && git push
 
 **Workflow:**
 
-1. Power off, remove battery, unplug charger
+1. Remove the battery and unplug the charger
 1. Remove the base cover
 1. Locate the 2.5-inch SATA drive sitting in its metal caddy screwed to the chassis
 1. Take a photograph of the drive in place before removing anything
@@ -167,30 +166,28 @@ git add . && git commit -m "Session X complete — [task name]" && git push
 
 -----
 
-### Session 4: CMOS Battery and BIOS Reset
+### Session 4: CMOS Battery Inspection and Replacement
 
-**Scenario:** A device is showing incorrect date and time after every reboot. You have been asked to perform a CMOS reset to clear the stored settings.
+**Scenario:** A device is brought in with a suspected dead CMOS battery — it was losing its date and time settings on every reboot before it stopped working. Your job is to locate the CMOS battery, remove it, inspect it, and re-seat it correctly.
 
 **Workflow:**
 
-1. Power off, remove battery, unplug charger
+1. Remove the battery and unplug the charger
 1. Remove the base cover
 1. Locate the CMOS coin-cell battery on the motherboard — small round silver battery, usually CR2032
-1. Before removing it — understand what it does. This battery keeps BIOS settings stored when main power is removed. When it dies, the system loses its date, time, and configuration on every reboot
-1. Take a photograph of the CMOS battery in place
+1. Before removing it — understand what it does. This battery keeps BIOS settings stored when main power is removed. When it fails, the system loses its date, time, and configuration on every reboot
+1. Take a photograph of the CMOS battery in place — note its position and how it connects to the board
 1. Remove the CMOS battery carefully using a plastic pry tool — do not use a metal screwdriver
-1. Wait 60 seconds — this drains residual charge and clears the volatile BIOS memory
-1. Re-seat the CMOS battery
-1. Reassemble and power on
-1. Enter BIOS — press F2 during startup
-1. Confirm the date and time have reset to default — set them correctly and save
-1. Take a photograph of the BIOS screen showing the reset state
-1. Log the session — note what the BIOS showed on entry and what was corrected
+1. Examine the battery and its housing — note any corrosion, damage, or debris around the contacts
+1. Re-seat the CMOS battery firmly
+1. Take a photograph of the CMOS battery re-seated
+1. Reassemble
+1. Log the session — note battery condition, housing condition, and any findings
 1. Push to GitHub
 
-**What you are learning:** CMOS resets clear BIOS passwords, fix clock faults, and restore default hardware settings. It is a standard first step for any BIOS-related fault before escalating further.
+**What you are learning:** CMOS battery failure is a common fault on older laptops. Knowing how to locate, remove, and inspect it — and understanding what it does — is a standard part of hardware diagnosis before escalating to a motherboard fault.
 
-**Skills:** CMOS battery handling, BIOS navigation, motherboard components, Dell boot keys
+**Skills:** CMOS battery handling, motherboard component identification, physical fault diagnosis
 
 -----
 
@@ -200,7 +197,7 @@ git add . && git commit -m "Session X complete — [task name]" && git push
 
 **Workflow:**
 
-1. Power off, remove battery, unplug charger
+1. Remove the battery and unplug the charger
 1. Remove the base cover
 1. Locate the cooling fan and heatsink — the fan sits over the CPU and the copper heatsink pipes draw heat away from it
 1. Take a photograph of the fan and heatsink before touching anything — this is your before evidence
@@ -213,34 +210,38 @@ git add . && git commit -m "Session X complete — [task name]" && git push
 1. Log the session — note dust level before and after, fan condition, and any findings
 1. Push to GitHub
 
-**What you are learning:** Dust buildup is one of the most common causes of overheating and unexpected shutdowns. Inspecting and cleaning the cooling system is a standard preventative maintenance task.
+**What you are learning:** Dust buildup is one of the most common causes of overheating and unexpected shutdowns. Inspecting and cleaning the cooling system is a standard preventative maintenance task in any MSP environment.
 
 **Skills:** Thermal management, fan inspection, preventative maintenance, before and after evidence documentation
 
 -----
 
-### Session 6: Full Rebuild and Fault Simulation
+### Session 6: Physical Fault Simulation
 
-**Scenario:** You receive a laptop that has been partially disassembled by someone else. It will not POST. Your job is to diagnose the fault, fix it, and confirm normal operation.
+**Scenario:** A laptop has been returned after someone attempted a repair. You need to inspect the internals, identify what has been disturbed or incorrectly seated, document it, and restore the correct configuration.
 
 **Workflow:**
 
-1. Power off, remove battery, unplug charger
+1. Remove the battery and unplug the charger
 1. Remove the base cover
-1. Deliberately remove the RAM stick and leave it out
-1. Reassemble the laptop fully
-1. Attempt to power on — observe exactly what happens. Note any beep codes, LED patterns, or error behaviour
-1. Document the symptom exactly — record it as you would on a real support ticket
-1. Power off, remove the base cover
-1. Examine the empty RAM slot — this is what a missing component fault looks like from the inside
-1. Re-seat the RAM stick correctly — press firmly until both clips click
-1. Reassemble and attempt to power on — note whether the behaviour changes
-1. Log the session — document the fault symptom, diagnosis, fix applied, and outcome
+1. Deliberately disturb the following — do one at a time and photograph each before restoring:
+- Unseat the SATA drive caddy from the interposer port — leave it slightly disconnected
+- Partially unseat the RAM stick — press one clip back without fully releasing it
+- Disconnect one Wi-Fi antenna cable
+1. Take a photograph of each disturbed component — this is your fault evidence
+1. For each component — document exactly what you see, what the fault would cause in a working device, and what the correct state looks like
+1. Restore each component to the correct state:
+- Re-seat the SATA drive caddy firmly
+- Re-seat the RAM stick until both clips click
+- Reconnect the Wi-Fi antenna cable until it clicks
+1. Take a photograph of each component restored
+1. Reassemble
+1. Log the session — document each fault found, what it would cause, and how it was resolved
 1. Push to GitHub
 
-**What you are learning:** POST failures are the first thing diagnosed when a device will not boot. Simulating a fault, documenting the symptom, and tracing it to a physical cause is the core of hardware fault diagnosis.
+**What you are learning:** In a real support environment you will regularly receive devices that have been partially disassembled by someone else. Being able to identify what is incorrectly seated, document it clearly, and restore it is a core 2nd line hardware skill.
 
-**Skills:** Fault simulation, POST behaviour, RAM fault diagnosis, reassembly under fault conditions, ticket documentation
+**Skills:** Fault identification, physical inspection, component re-seating, fault documentation, hardware audit
 
 -----
 
@@ -250,7 +251,7 @@ git add . && git commit -m "Session X complete — [task name]" && git push
 
 **Workflow:**
 
-1. Power off, remove battery, unplug charger
+1. Remove the battery and unplug the charger
 1. Remove the base cover
 1. Locate the Wi-Fi card — small rectangular card held by one screw, with two thin antenna cables attached
 1. Take a photograph of the card and antenna connections before touching anything
@@ -264,7 +265,7 @@ git add . && git commit -m "Session X complete — [task name]" && git push
 1. Log the session — note antenna cable colours, connector condition, and any findings
 1. Push to GitHub
 
-**What you are learning:** Loose antenna cables are a frequent cause of poor wireless signal and intermittent drops. Physical inspection rules out a connection fault before replacing the card or moving to a software investigation.
+**What you are learning:** Loose antenna cables are a frequent cause of poor wireless signal and intermittent drops. Physical inspection rules out a connection fault before replacing the card or escalating to a driver investigation.
 
 **Skills:** Wi-Fi card handling, antenna cable identification, connector inspection, physical fault diagnosis
 
@@ -272,11 +273,11 @@ git add . && git commit -m "Session X complete — [task name]" && git push
 
 ### Session 8: Deep Clean and Preventative Maintenance
 
-**Scenario:** The laptop is running hot and the fan is audibly louder than normal. Carry out a full preventative maintenance clean — a standard scheduled task in any MSP environment.
+**Scenario:** The laptop has come in for a scheduled maintenance clean. Carry out a full preventative maintenance inspection and clean — a standard deliverable in any MSP contract.
 
 **Workflow:**
 
-1. Power off, remove battery, unplug charger
+1. Remove the battery and unplug the charger
 1. Remove the base cover
 1. Take a photograph of the full interior before touching anything — this is your before evidence
 1. Work through the interior methodically — examine every visible surface for dust, debris, or anything out of place:
@@ -313,7 +314,7 @@ After Session 8, restart with harder constraints:
 
 **Hardware** — Component identification, motherboard orientation, RAM handling, SATA storage, CMOS battery, cooling systems, Wi-Fi card, antenna cables, connectors
 
-**Diagnostics** — POST behaviour, fault simulation and resolution, physical fault diagnosis, cable and connector inspection
+**Diagnostics** — Physical fault identification, fault simulation and resolution, cable and connector inspection, component condition assessment
 
 **Safety** — Electrostatic discharge prevention, safe disassembly, battery removal, anti-static wrist strap, component handling
 
@@ -321,10 +322,8 @@ After Session 8, restart with harder constraints:
 
 **Documentation** — Evidence photography, structured logging, GitHub as audit trail
 
-**BIOS** — Navigation, date and time reset, CMOS clear procedure, Dell boot keys (F2 for BIOS, F12 for boot menu)
-
 -----
 
 ## Audit Trail
 
-Every session is logged manually to logs/hardware_log.csv immediately after completion. Evidence photos are saved to evidence/session_XX/. See LOGGING.md for the full schema.
+Every session is logged manually to `logs/hardware_log.tsv` immediately after completion. Evidence photos are saved to `evidence/session_XX/`. See LOGGING.md for the full schema.
